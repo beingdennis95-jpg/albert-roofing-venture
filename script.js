@@ -59,7 +59,7 @@
   if (!prefersReduced && 'IntersectionObserver' in window) {
     var targets = document.querySelectorAll(
       '.pain-card,.trust-item,.solution-feature,.service-card,' +
-      '.step-item,.package-card,.storm-item,.rep-card,.compare-col'
+      '.step-item,.package-card,.storm-item,.rep-card,.compare-col,.warranty-card'
     );
 
     var io = new IntersectionObserver(function (entries) {
@@ -77,4 +77,59 @@
       io.observe(el);
     });
   }
+
+  /* ── Before / After Slider ── */
+  var baRange  = document.getElementById('baRange');
+  var baAfter  = document.getElementById('baAfter');
+  var baHandle = document.getElementById('baHandle');
+
+  function setSlider(pct) {
+    /* clip-path: inset(top right bottom left)
+       inset(0 0 0 X%) clips X% from the left → reveals right (100-X)%
+       Left of handle = Before (shows through), Right = After (revealed)  */
+    baAfter.style.clipPath = 'inset(0 0 0 ' + (100 - pct) + '%)';
+    baHandle.style.left    = pct + '%';
+  }
+
+  if (baRange && baAfter && baHandle) {
+    setSlider(50);
+    baRange.addEventListener('input',  function () { setSlider(this.value); });
+    baRange.addEventListener('change', function () { setSlider(this.value); });
+  }
+
+  /* ── Roof Cost Calculator ── */
+  var roofSzInput = document.getElementById('roofSize');
+  var roofSzDisp  = document.getElementById('roofSizeVal');
+  var roofMatSel  = document.getElementById('roofMaterial');
+  var roofCmxSel  = document.getElementById('roofComplexity');
+  var calcOut     = document.getElementById('calcResult');
+
+  function addCommas(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function runCalc() {
+    if (!roofSzInput || !calcOut) return;
+    var sz  = parseFloat(roofSzInput.value)  || 2000;
+    var rt  = parseFloat(roofMatSel.value)   || 5.50;
+    var mx  = parseFloat(roofCmxSel.value)   || 1.15;
+    var base = sz * rt * mx;
+    var lo   = Math.round(base * 0.90);
+    var hi   = Math.round(base * 1.15);
+    calcOut.textContent = '$' + addCommas(lo) + ' – $' + addCommas(hi);
+  }
+
+  function onSzChange() {
+    if (roofSzDisp) roofSzDisp.textContent = addCommas(parseInt(roofSzInput.value)) + ' sq ft';
+    runCalc();
+  }
+
+  if (roofSzInput && calcOut) {
+    roofSzInput.addEventListener('input',  onSzChange);
+    roofSzInput.addEventListener('change', onSzChange);
+    roofMatSel.addEventListener('change',  runCalc);
+    roofCmxSel.addEventListener('change',  runCalc);
+    runCalc();
+  }
+
 })();

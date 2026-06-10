@@ -218,6 +218,163 @@
     </div>
   </section>
 
+  <!-- BEFORE / AFTER SLIDER ========================================= -->
+  <section class="section ba-section" id="before-after">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Real Roof Transformation</div>
+        <h2 class="section-title">Slide to See What a New Roof Can Do.</h2>
+        <p class="section-sub">From worn-out shingles, stains, leaks, and storm damage to a clean, protected roof that instantly improves curb appeal and home value.</p>
+      </div>
+      <!--
+        IMAGES REQUIRED — place these two files in the same folder as index.html:
+          roof-before.jpg  —  photo of a damaged or worn roof (before state)
+          roof-after.jpg   —  photo of a newly installed clean roof (after state)
+        Recommended: 1400 × 600 px minimum, landscape orientation, same camera angle.
+        The gradient placeholders below will show until real photos are added.
+      -->
+      <div class="ba-wrap">
+        <div class="ba-container" id="baContainer">
+          <div class="ba-before">
+            <img src="roof-before.jpg" alt="Damaged roof with worn shingles, stains, and visible storm damage — before roof restoration" onerror="this.style.display='none'">
+          </div>
+          <div class="ba-after" id="baAfter">
+            <img src="roof-after.jpg" alt="New premium roof installation with clean shingles and professional finishing — after Albert Roofing Venture restoration" onerror="this.style.display='none'">
+          </div>
+          <div class="ba-label ba-label-left">Before</div>
+          <div class="ba-label ba-label-right">After</div>
+          <div class="ba-handle" id="baHandle">
+            <div class="ba-handle-line"></div>
+            <div class="ba-handle-btn">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <path d="M8 5L2 11L8 17" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 5L20 11L14 17" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="ba-handle-line"></div>
+          </div>
+          <input type="range" class="ba-range" id="baRange" min="0" max="100" value="50"
+            aria-label="Slide left to see before, right to see after roof comparison">
+        </div>
+        <p class="ba-supporting">A roof replacement is not just a repair — it is a visible upgrade to the protection, appearance, and value of your home.</p>
+        <div class="ba-cta-wrap">
+          <a href="packages.html#cta" class="btn btn-primary">Book a Free Roof Inspection</a>
+          <p class="ba-micro">No pressure. No obligation. Just a clear roof assessment and honest next steps.</p>
+        </div>
+        <div class="ba-badges">
+          <span class="ba-badge">✓ Free Roof Inspection</span>
+          <span class="ba-badge">✓ Clear Written Estimate</span>
+          <span class="ba-badge">✓ Warranty Options Available</span>
+          <span class="ba-badge">✓ Fast Follow-Up</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOF COST CALCULATOR ========================================== -->
+  <section class="section calc-section" id="roof-cost-calculator">
+    <div class="container">
+      <div class="calc-layout">
+
+        <div class="calc-copy">
+          <div class="section-label">Roof Cost Calculator</div>
+          <h2 class="section-title">Get a Fast Roof Replacement Estimate.</h2>
+          <p class="section-sub">Wondering what a new roof might cost? Use this simple calculator to get a rough price range based on your roof size, material choice, and roof complexity.</p>
+          <p class="calc-para">Every roof is different. Final pricing depends on pitch, tear-off layers, decking condition, flashing, ventilation, permits, access, and local labor costs. This calculator gives homeowners a starting point before booking an inspection.</p>
+          <div class="calc-trust-list">
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> No pushy sales pressure</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Honest roof assessment</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Clear repair or replacement options</div>
+          </div>
+        </div>
+
+        <div class="calc-card">
+          <div class="calc-card-title">Estimate Your Roof Cost</div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="roofSize">Approximate Roof Size</label>
+            <div class="calc-range-row">
+              <input type="range" class="calc-range-input" id="roofSize" name="roofSize"
+                min="800" max="5000" step="100" value="2000">
+              <span class="calc-range-val" id="roofSizeVal" aria-live="polite">2,000 sq ft</span>
+            </div>
+            <div class="calc-range-bounds"><span>800 sq ft</span><span>5,000 sq ft</span></div>
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="roofMaterial">Choose Roofing Material</label>
+            <select class="calc-select" id="roofMaterial" name="roofMaterial">
+              <option value="5.50">Asphalt Shingles (~$5.50/sq ft)</option>
+              <option value="7.50">Architectural Shingles (~$7.50/sq ft)</option>
+              <option value="12.00">Metal Roofing (~$12.00/sq ft)</option>
+              <option value="15.00">Premium / Designer Roofing (~$15.00/sq ft)</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="roofComplexity">Select Roof Complexity</label>
+            <select class="calc-select" id="roofComplexity" name="roofComplexity">
+              <option value="1.00">Simple Roof</option>
+              <option value="1.15" selected>Standard Roof</option>
+              <option value="1.35">Complex / Steep Pitch Roof</option>
+            </select>
+          </div>
+
+          <div class="calc-result-box">
+            <div class="calc-result-label">Estimated Project Range</div>
+            <div class="calc-result-value" id="calcResult" aria-live="polite">$11,385 – $14,548</div>
+            <div class="calc-result-disclaimer">This is only a rough estimate. Your final quote may be higher or lower after a professional roof inspection.</div>
+          </div>
+
+          <a href="packages.html#cta" class="btn btn-primary calc-btn">Schedule My Free Roof Inspection</a>
+          <p class="calc-micro">Get a real quote, expert recommendations, and a clear plan for your roof.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WARRANTY HIGHLIGHTS =========================================== -->
+  <section class="section warranty-section" id="warranty-protection">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Warranty Protection</div>
+        <h2 class="section-title">A Roof Should Protect Your Home — and Your Peace of Mind.</h2>
+        <p class="section-sub">Homeowners want more than shingles. They want confidence that the job is done right, the materials are protected, and their investment is backed.</p>
+      </div>
+
+      <div class="warranty-grid">
+        <div class="warranty-card">
+          <div class="warranty-icon">🛡️</div>
+          <h3 class="warranty-title">Workmanship Warranty</h3>
+          <p class="warranty-desc">Your roof installation should be handled with care, precision, and accountability. Workmanship warranty coverage helps protect you against installation-related issues.</p>
+          <div class="warranty-line">Built for confidence after installation.</div>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-icon">📋</div>
+          <h3 class="warranty-title">Manufacturer Warranty</h3>
+          <p class="warranty-desc">Many roofing materials come with manufacturer-backed coverage options. We help homeowners understand what their material warranty includes before the project begins.</p>
+          <div class="warranty-line">Know what your materials are backed by.</div>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-icon">💧</div>
+          <h3 class="warranty-title">Leak Protection</h3>
+          <p class="warranty-desc">A properly installed roof should help protect your home from water intrusion, ceiling damage, mold risk, and expensive future repairs.</p>
+          <div class="warranty-line">Protection where homeowners need it most.</div>
+        </div>
+      </div>
+
+      <div class="warranty-footer">
+        <p class="warranty-statement">Before any project begins, warranty details should be reviewed clearly so you know what is covered, what is not covered, and how to protect your investment.</p>
+        <p class="warranty-disclaimer">Warranty terms vary by material, manufacturer, project scope, and installer agreement. Confirm exact warranty coverage during your roof inspection or proposal review.</p>
+        <div class="warranty-cta">
+          <a href="packages.html#cta" class="btn btn-primary">Ask About Warranty Options</a>
+          <p class="warranty-micro">We will walk you through the available protection options before you commit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PACKAGES TEASER -->
   <section class="section packages" id="packages">
     <div class="container">

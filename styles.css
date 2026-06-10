@@ -1233,3 +1233,375 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* =====================================================
+   BEFORE / AFTER ROOF SLIDER
+   ===================================================== */
+.ba-section { background: var(--black-2); }
+
+.ba-wrap { max-width: 860px; margin: 0 auto; }
+
+.ba-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.65);
+  border: 1px solid rgba(255,255,255,0.09);
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  margin-bottom: 28px;
+}
+
+.ba-before,
+.ba-after {
+  position: absolute;
+  inset: 0;
+}
+
+/* Gradient placeholders — visible until real photos are added */
+.ba-before {
+  background: radial-gradient(ellipse at 50% 40%, #3d2010 0%, #211208 45%, #0d0807 100%);
+}
+.ba-after {
+  clip-path: inset(0 0 0 50%); /* JS controls this */
+  background: radial-gradient(ellipse at 50% 40%, #0e2035 0%, #0b1828 45%, #050b12 100%);
+}
+
+.ba-before img,
+.ba-after img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.ba-label {
+  position: absolute;
+  top: 14px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 5;
+  pointer-events: none;
+}
+.ba-label-left  { left: 14px; }
+.ba-label-right { right: 14px; }
+
+.ba-handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+.ba-handle-line {
+  flex: 1;
+  width: 2px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+.ba-handle-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 0 3px rgba(255,107,0,0.3);
+  flex-shrink: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.ba-container:hover .ba-handle-btn {
+  transform: scale(1.06);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.6), 0 0 0 5px rgba(255,107,0,0.22);
+}
+.ba-container:focus-within .ba-handle-btn {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.65), 0 0 0 7px rgba(255,107,0,0.18);
+}
+
+/* Hidden range input covers entire container — captures all pointer events */
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 20;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.ba-supporting {
+  font-size: 14px;
+  color: var(--w70);
+  line-height: 1.65;
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 0 4px;
+}
+.ba-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.ba-micro { font-size: 13px; color: var(--w40); text-align: center; }
+
+.ba-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.ba-badge {
+  background: var(--black-4);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--w70);
+  font-weight: 500;
+}
+
+/* =====================================================
+   ROOF COST CALCULATOR
+   ===================================================== */
+.calc-section { background: var(--black-3); }
+
+.calc-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.calc-copy .section-label { display: inline-block; }
+.calc-copy .section-title { text-align: left; }
+.calc-copy .section-sub   { text-align: left; margin: 0; max-width: 100%; }
+
+.calc-para {
+  font-size: 14px;
+  color: var(--w70);
+  line-height: 1.7;
+  margin-top: 14px;
+  margin-bottom: 24px;
+}
+.calc-trust-list { display: flex; flex-direction: column; gap: 10px; }
+.calc-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--w70);
+}
+.calc-trust-check { color: var(--orange); font-weight: 700; }
+
+.calc-card {
+  background: var(--black);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-lg);
+  padding: 28px 22px;
+}
+.calc-card-title {
+  font-family: var(--font-h);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.calc-field { margin-bottom: 20px; }
+.calc-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--w70);
+  margin-bottom: 9px;
+  letter-spacing: 0.02em;
+}
+
+.calc-range-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+.calc-range-input {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+.calc-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 3px solid var(--black);
+  box-shadow: 0 0 0 2px var(--orange-border);
+  cursor: pointer;
+}
+.calc-range-input::-moz-range-thumb {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: none;
+  cursor: pointer;
+}
+.calc-range-val {
+  font-family: var(--font-h);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--orange);
+  min-width: 88px;
+  text-align: right;
+  white-space: nowrap;
+}
+.calc-range-bounds {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--w40);
+}
+
+.calc-select {
+  width: 100%;
+  background: var(--black-4);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-sm);
+  color: var(--white);
+  font-family: var(--font-b);
+  font-size: 14px;
+  padding: 11px 38px 11px 13px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1L6 6L11 1' stroke='rgba%28255%2C255%2C255%2C0.4%29' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+}
+.calc-select:focus { outline: none; border-color: var(--orange-border); }
+
+.calc-result-box {
+  background: var(--orange-glow);
+  border: 1px solid var(--orange-border);
+  border-radius: var(--r-md);
+  padding: 20px 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.calc-result-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.calc-result-value {
+  font-family: var(--font-h);
+  font-size: clamp(24px, 6vw, 34px);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.calc-result-disclaimer { font-size: 12px; color: var(--w40); line-height: 1.5; }
+
+.calc-btn { width: 100%; justify-content: center; }
+.calc-micro { text-align: center; font-size: 13px; color: var(--w40); margin-top: 10px; }
+
+/* =====================================================
+   WARRANTY HIGHLIGHTS
+   ===================================================== */
+.warranty-section { background: var(--black-4); }
+
+.warranty-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.warranty-card {
+  background: var(--black-2);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-lg);
+  padding: 28px 22px;
+  transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
+}
+.warranty-icon { font-size: 32px; margin-bottom: 14px; }
+.warranty-title {
+  font-family: var(--font-h);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.warranty-desc { font-size: 14px; color: var(--w70); line-height: 1.7; margin-bottom: 16px; }
+.warranty-line {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--orange);
+  padding-top: 12px;
+  border-top: 1px solid var(--orange-border);
+}
+
+.warranty-footer { max-width: 680px; margin: 0 auto; text-align: center; }
+.warranty-statement { font-size: 15px; color: var(--w70); line-height: 1.7; margin-bottom: 12px; }
+.warranty-disclaimer {
+  font-size: 12px;
+  color: var(--w40);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.warranty-cta { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.warranty-micro { font-size: 13px; color: var(--w40); text-align: center; }
+
+/* ─── Responsive overrides for new sections ──────── */
+@media (min-width: 480px) {
+  .warranty-grid { grid-template-columns: 1fr 1fr; }
+  .ba-cta-wrap { flex-direction: row; gap: 16px; flex-wrap: wrap; justify-content: center; }
+}
+
+@media (min-width: 768px) {
+  .ba-container { aspect-ratio: 16 / 7; }
+  .calc-layout  { flex-direction: row; align-items: flex-start; gap: 60px; }
+  .calc-copy    { flex: 1; }
+  .calc-card    { flex: 0 0 420px; }
+}
+
+@media (min-width: 1024px) {
+  .warranty-grid { grid-template-columns: repeat(3, 1fr); }
+  .warranty-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--orange-border);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  }
+}
