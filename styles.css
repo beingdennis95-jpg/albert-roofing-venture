@@ -1537,6 +1537,85 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .calc-btn { width: 100%; justify-content: center; }
 .calc-micro { text-align: center; font-size: 13px; color: var(--w40); margin-top: 10px; }
 
+/* Number inputs */
+.calc-input-num {
+  width: 100%;
+  background: var(--black-4);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-sm);
+  color: var(--white);
+  font-family: var(--font-h);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 11px 13px;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  transition: border-color var(--ease);
+}
+.calc-input-num:focus { border-color: var(--orange-border); }
+.calc-input-num::-webkit-outer-spin-button,
+.calc-input-num::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.calc-input-num[type=number] { -moz-appearance: textfield; }
+
+/* Two-column results row inside result box */
+.calc-result-box { text-align: center; }
+.calc-results-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 0;
+}
+.calc-result-divider { display: none; }
+.calc-result-item { flex: 1; }
+.calc-results-row .calc-result-value {
+  font-size: clamp(17px, 3.5vw, 24px);
+}
+
+/* Recommended fix row */
+.calc-fix-row {
+  background: rgba(255,107,0,0.07);
+  border: 1px solid var(--orange-border);
+  border-radius: var(--r-sm);
+  padding: 11px 14px;
+  margin-top: 14px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+.calc-fix-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.calc-fix-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.45;
+}
+
+@media (min-width: 480px) {
+  .calc-results-row {
+    flex-direction: row;
+    gap: 0;
+    align-items: stretch;
+    margin-bottom: 0;
+  }
+  .calc-result-divider {
+    display: block;
+    width: 1px;
+    background: var(--orange-border);
+    flex-shrink: 0;
+    margin: 6px 0;
+  }
+  .calc-result-item { padding: 0 14px; }
+  .calc-result-item:first-child { padding-left: 0; }
+  .calc-result-item:last-child  { padding-right: 0; }
+}
+
 /* =====================================================
    WARRANTY HIGHLIGHTS
    ===================================================== */

@@ -97,39 +97,64 @@
     baRange.addEventListener('change', function () { setSlider(this.value); });
   }
 
-  /* ── Roof Cost Calculator ── */
-  var roofSzInput = document.getElementById('roofSize');
-  var roofSzDisp  = document.getElementById('roofSizeVal');
-  var roofMatSel  = document.getElementById('roofMaterial');
-  var roofCmxSel  = document.getElementById('roofComplexity');
-  var calcOut     = document.getElementById('calcResult');
+  /* ── Lead Leakage Calculator ── */
+  var llAvgLeads   = document.getElementById('avgLeads');
+  var llMissedRate = document.getElementById('missedRate');
+  var llJobValue   = document.getElementById('jobValue');
+  var llCloseRate  = document.getElementById('closeRate');
+  var llSpeed      = document.getElementById('followUpSpeed');
+  var llRevOut     = document.getElementById('calcRevenueResult');
+  var llOppOut     = document.getElementById('calcOppResult');
+  var llFixOut     = document.getElementById('calcFixResult');
 
   function addCommas(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
-  function runCalc() {
-    if (!roofSzInput || !calcOut) return;
-    var sz  = parseFloat(roofSzInput.value)  || 2000;
-    var rt  = parseFloat(roofMatSel.value)   || 5.50;
-    var mx  = parseFloat(roofCmxSel.value)   || 1.15;
-    var base = sz * rt * mx;
-    var lo   = Math.round(base * 0.90);
-    var hi   = Math.round(base * 1.15);
-    calcOut.textContent = '$' + addCommas(lo) + ' – $' + addCommas(hi);
+  function runLeadCalc() {
+    if (!llAvgLeads || !llRevOut) return;
+    var leads  = Math.max(1, parseFloat(llAvgLeads.value)   || 120);
+    var missed = parseFloat(llMissedRate.value) || 0.15;
+    var job    = Math.max(1, parseFloat(llJobValue.value)   || 850);
+    var close  = parseFloat(llCloseRate.value)  || 0.20;
+    var speed  = parseFloat(llSpeed.value)      || 1.60;
+
+    /* Missed lead volume */
+    var missedCount = leads * missed;
+    var oppLo = Math.max(1, Math.floor(missedCount * 0.85));
+    var oppHi = Math.ceil(missedCount * 1.25);
+
+    /* Revenue leakage — slow follow-up compounds losses */
+    var base  = missedCount * job * close * speed;
+    var revLo = Math.round(base * 0.80);
+    var revHi = Math.round(base * 1.20);
+
+    llRevOut.textContent = '$' + addCommas(revLo) + ' – $' + addCommas(revHi);
+    llOppOut.textContent = addCommas(oppLo) + ' – ' + addCommas(oppHi) + ' leads/mo';
+
+    /* Dynamic recommendation */
+    var fix;
+    if (speed >= 2.00) {
+      fix = 'AI Voice Agent + Missed Call Recovery + Nurture Sequences';
+    } else if (missed >= 0.30) {
+      fix = 'Missed Call Recovery + AI Follow-Up + CRM Automation';
+    } else if (close <= 0.15) {
+      fix = 'Lead Nurture Sequences + Review Automation + Pipeline Tracking';
+    } else {
+      fix = 'AI Voice Agent + CRM Follow-Up + Review Automation';
+    }
+    llFixOut.textContent = fix;
   }
 
-  function onSzChange() {
-    if (roofSzDisp) roofSzDisp.textContent = addCommas(parseInt(roofSzInput.value)) + ' sq ft';
-    runCalc();
-  }
-
-  if (roofSzInput && calcOut) {
-    roofSzInput.addEventListener('input',  onSzChange);
-    roofSzInput.addEventListener('change', onSzChange);
-    roofMatSel.addEventListener('change',  runCalc);
-    roofCmxSel.addEventListener('change',  runCalc);
-    runCalc();
+  if (llAvgLeads && llRevOut) {
+    [llAvgLeads, llJobValue].forEach(function (el) {
+      el.addEventListener('input',  runLeadCalc);
+      el.addEventListener('change', runLeadCalc);
+    });
+    [llMissedRate, llCloseRate, llSpeed].forEach(function (el) {
+      el.addEventListener('change', runLeadCalc);
+    });
+    runLeadCalc();
   }
 
 })();

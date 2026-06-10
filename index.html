@@ -271,63 +271,98 @@
     </div>
   </section>
 
-  <!-- ROOF COST CALCULATOR ========================================== -->
+  <!-- MISSED LEAD REVENUE CALCULATOR =============================== -->
   <section class="section calc-section" id="roof-cost-calculator">
     <div class="container">
       <div class="calc-layout">
 
         <div class="calc-copy">
-          <div class="section-label">Roof Cost Calculator</div>
-          <h2 class="section-title">Get a Fast Roof Replacement Estimate.</h2>
-          <p class="section-sub">Wondering what a new roof might cost? Use this simple calculator to get a rough price range based on your roof size, material choice, and roof complexity.</p>
-          <p class="calc-para">Every roof is different. Final pricing depends on pitch, tear-off layers, decking condition, flashing, ventilation, permits, access, and local labor costs. This calculator gives homeowners a starting point before booking an inspection.</p>
+          <div class="section-label">Lead Leakage Calculator</div>
+          <h2 class="section-title">Calculate How Much Revenue You're Losing From Missed Calls and Slow Follow-Up.</h2>
+          <p class="section-sub">Most service businesses don't have a lead problem — they have a response problem. Use this quick calculator to estimate how many opportunities may be leaking every month.</p>
+          <p class="calc-para">Every missed call, delayed reply, untracked form submission, and forgotten follow-up can turn into lost revenue. Albert Venture Design installs AI voice agents, CRM workflows, review automation, and lead follow-up systems that help businesses capture and convert more opportunities.</p>
           <div class="calc-trust-list">
-            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> No pushy sales pressure</div>
-            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Honest roof assessment</div>
-            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Clear repair or replacement options</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Missed calls recovered</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Faster response time</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Automated CRM follow-up</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Review requests sent automatically</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> More booked appointments</div>
+            <div class="calc-trust-item"><span class="calc-trust-check">✓</span> Better lead tracking</div>
           </div>
         </div>
 
         <div class="calc-card">
-          <div class="calc-card-title">Estimate Your Roof Cost</div>
+          <div class="calc-card-title">Estimate Your Monthly Lead Leakage</div>
 
           <div class="calc-field">
-            <label class="calc-label" for="roofSize">Approximate Roof Size</label>
-            <div class="calc-range-row">
-              <input type="range" class="calc-range-input" id="roofSize" name="roofSize"
-                min="800" max="5000" step="100" value="2000">
-              <span class="calc-range-val" id="roofSizeVal" aria-live="polite">2,000 sq ft</span>
-            </div>
-            <div class="calc-range-bounds"><span>800 sq ft</span><span>5,000 sq ft</span></div>
+            <label class="calc-label" for="avgLeads">Average Monthly Leads</label>
+            <input type="number" class="calc-input-num" id="avgLeads" name="avgLeads"
+              min="1" max="99999" value="120" placeholder="120">
           </div>
 
           <div class="calc-field">
-            <label class="calc-label" for="roofMaterial">Choose Roofing Material</label>
-            <select class="calc-select" id="roofMaterial" name="roofMaterial">
-              <option value="5.50">Asphalt Shingles (~$5.50/sq ft)</option>
-              <option value="7.50">Architectural Shingles (~$7.50/sq ft)</option>
-              <option value="12.00">Metal Roofing (~$12.00/sq ft)</option>
-              <option value="15.00">Premium / Designer Roofing (~$15.00/sq ft)</option>
+            <label class="calc-label" for="missedRate">Missed Call / No Response Rate</label>
+            <select class="calc-select" id="missedRate" name="missedRate">
+              <option value="0.10">10% — Low leakage</option>
+              <option value="0.15" selected>15% — Moderate leakage</option>
+              <option value="0.20">20% — High leakage</option>
+              <option value="0.25">25% — Very high leakage</option>
+              <option value="0.30">30% — Severe leakage</option>
+              <option value="0.40">40% — Critical leakage</option>
             </select>
           </div>
 
           <div class="calc-field">
-            <label class="calc-label" for="roofComplexity">Select Roof Complexity</label>
-            <select class="calc-select" id="roofComplexity" name="roofComplexity">
-              <option value="1.00">Simple Roof</option>
-              <option value="1.15" selected>Standard Roof</option>
-              <option value="1.35">Complex / Steep Pitch Roof</option>
+            <label class="calc-label" for="jobValue">Average Job / Project Value ($)</label>
+            <input type="number" class="calc-input-num" id="jobValue" name="jobValue"
+              min="1" max="9999999" value="850" placeholder="850">
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="closeRate">Current Close Rate</label>
+            <select class="calc-select" id="closeRate" name="closeRate">
+              <option value="0.10">10%</option>
+              <option value="0.15">15%</option>
+              <option value="0.20" selected>20%</option>
+              <option value="0.25">25%</option>
+              <option value="0.30">30%</option>
+              <option value="0.40">40%</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="followUpSpeed">Follow-Up Speed</label>
+            <select class="calc-select" id="followUpSpeed" name="followUpSpeed">
+              <option value="1.00">Under 1 minute</option>
+              <option value="1.15">1–5 minutes</option>
+              <option value="1.35">5–30 minutes</option>
+              <option value="1.60" selected>30+ minutes</option>
+              <option value="2.00">Same day</option>
+              <option value="2.80">Next day or later</option>
             </select>
           </div>
 
           <div class="calc-result-box">
-            <div class="calc-result-label">Estimated Project Range</div>
-            <div class="calc-result-value" id="calcResult" aria-live="polite">$11,385 – $14,548</div>
-            <div class="calc-result-disclaimer">This is only a rough estimate. Your final quote may be higher or lower after a professional roof inspection.</div>
+            <div class="calc-results-row">
+              <div class="calc-result-item">
+                <div class="calc-result-label">Est. Monthly Revenue Leakage</div>
+                <div class="calc-result-value" id="calcRevenueResult" aria-live="polite">$3,917 – $5,875</div>
+              </div>
+              <div class="calc-result-divider"></div>
+              <div class="calc-result-item">
+                <div class="calc-result-label">Missed Opportunities</div>
+                <div class="calc-result-value" id="calcOppResult" aria-live="polite">15 – 23 leads/mo</div>
+              </div>
+            </div>
+            <div class="calc-fix-row">
+              <div class="calc-fix-label">Recommended Growth Fix</div>
+              <div class="calc-fix-value" id="calcFixResult" aria-live="polite">AI Voice Agent + CRM Follow-Up + Review Automation</div>
+            </div>
+            <div class="calc-result-disclaimer">Estimates based on your inputs. Actual results depend on industry, market, and implementation.</div>
           </div>
 
-          <a href="packages.html#cta" class="btn btn-primary calc-btn">Schedule My Free Roof Inspection</a>
-          <p class="calc-micro">Get a real quote, expert recommendations, and a clear plan for your roof.</p>
+          <a href="packages.html#cta" class="btn btn-primary calc-btn">Fix My Lead Leakage</a>
+          <p class="calc-micro">Book a free Growth Audit to see where calls, leads, reviews, and follow-up are slipping through the cracks.</p>
         </div>
 
       </div>
