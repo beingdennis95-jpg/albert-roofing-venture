@@ -1260,13 +1260,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   inset: 0;
 }
 
-/* Gradient placeholders — visible until real photos are added */
+/* Gradient placeholders — visible until real dashboard photos are added */
 .ba-before {
-  background: radial-gradient(ellipse at 50% 40%, #3d2010 0%, #211208 45%, #0d0807 100%);
+  background: radial-gradient(ellipse at 50% 40%, #3a0c0c 0%, #200808 45%, #0d0505 100%);
 }
 .ba-after {
   clip-path: inset(0 0 0 50%); /* JS controls this */
-  background: radial-gradient(ellipse at 50% 40%, #0e2035 0%, #0b1828 45%, #050b12 100%);
+  background: radial-gradient(ellipse at 50% 40%, #0a3018 0%, #071e10 45%, #030d07 100%);
 }
 
 .ba-before img,
@@ -1752,5 +1752,87 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     transform: translateY(-5px);
     border-color: var(--orange-strong);
     box-shadow: 0 20px 48px rgba(255,107,0,0.12), 0 4px 12px rgba(0,0,0,0.5);
+  }
+}
+
+/* ── Calculator Dashboard Showcase ─────────────────────────────────── */
+.calc-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.calc-showcase-item {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  flex: 1;
+}
+
+.calc-showcase-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-lg);
+  object-fit: cover;
+}
+
+/* Red "Before" placeholder — shows when avd-before.jpg is missing */
+.cs-before {
+  border: 2px solid rgba(220, 50, 50, 0.40);
+  box-shadow: 0 0 0 1px rgba(220, 50, 50, 0.10), 0 8px 32px rgba(200, 30, 30, 0.18);
+  min-height: 200px;
+  background: radial-gradient(ellipse at 50% 30%, #3a0c0c 0%, #200808 50%, #0d0505 100%);
+}
+
+/* Green "After" placeholder — shows when avd-after.jpg is missing */
+.cs-after {
+  border: 2px solid rgba(34, 180, 80, 0.38);
+  box-shadow: 0 0 0 1px rgba(34, 180, 80, 0.10), 0 8px 32px rgba(20, 160, 60, 0.16);
+  min-height: 200px;
+  background: radial-gradient(ellipse at 50% 30%, #0a3018 0%, #071e10 50%, #030d07 100%);
+}
+
+.cs-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: var(--font-h);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.cs-badge-before {
+  background: rgba(200, 30, 30, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 80, 80, 0.4);
+}
+
+.cs-badge-after {
+  background: rgba(20, 160, 60, 0.85);
+  color: #fff;
+  border: 1px solid rgba(60, 220, 100, 0.4);
+}
+
+@media (min-width: 640px) {
+  .calc-showcase {
+    flex-direction: row;
+  }
+  .cs-before,
+  .cs-after {
+    min-height: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cs-before,
+  .cs-after {
+    min-height: 280px;
   }
 }
