@@ -59,7 +59,8 @@
   if (!prefersReduced && 'IntersectionObserver' in window) {
     var targets = document.querySelectorAll(
       '.pain-card,.trust-item,.solution-feature,.service-card,' +
-      '.step-item,.package-card,.storm-item,.rep-card,.compare-col,.warranty-card'
+      '.step-item,.package-card,.storm-item,.rep-card,.compare-col,.warranty-card,' +
+      '.proof-card,.showcase-card,.testimonial-card'
     );
 
     var io = new IntersectionObserver(function (entries) {
@@ -95,6 +96,22 @@
     setSlider(50);
     baRange.addEventListener('input',  function () { setSlider(this.value); });
     baRange.addEventListener('change', function () { setSlider(this.value); });
+  }
+
+  /* ── Roofing Before / After Slider ── */
+  var rbaRange  = document.getElementById('rbaRange');
+  var rbaAfter  = document.getElementById('rbaAfter');
+  var rbaHandle = document.getElementById('rbaHandle');
+
+  function setRoofSlider(pct) {
+    rbaAfter.style.clipPath = 'inset(0 0 0 ' + (100 - pct) + '%)';
+    rbaHandle.style.left    = pct + '%';
+  }
+
+  if (rbaRange && rbaAfter && rbaHandle) {
+    setRoofSlider(50);
+    rbaRange.addEventListener('input',  function () { setRoofSlider(this.value); });
+    rbaRange.addEventListener('change', function () { setRoofSlider(this.value); });
   }
 
   /* ── Lead Leakage Calculator ── */
