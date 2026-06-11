@@ -1275,7 +1275,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   pointer-events: none;
 }
@@ -1740,7 +1740,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (min-width: 768px) {
-  .ba-container { aspect-ratio: 16 / 7; }
+  .ba-container { aspect-ratio: 4 / 3; }
   .calc-layout  { flex-direction: row; align-items: flex-start; gap: 60px; }
   .calc-copy    { flex: 1; }
   .calc-card    { flex: 0 0 420px; }
@@ -2107,3 +2107,305 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 600;
 }
 .cta-phone-num:hover { color: var(--orange); text-decoration: underline; }
+
+/* Roofing Services Growth Visual */
+.services-visual-section {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,107,0,0.14), transparent 52%),
+    var(--black);
+}
+
+.services-visual-frame {
+  width: min(100%, 1360px);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(8px, 1.4vw, 16px);
+  border: 1px solid rgba(255,107,0,0.34);
+  border-radius: var(--r-lg);
+  background: linear-gradient(145deg, rgba(255,107,0,0.13), rgba(255,255,255,0.025));
+  box-shadow: 0 28px 80px rgba(0,0,0,0.64), 0 0 44px rgba(255,107,0,0.16);
+  overflow: visible;
+}
+
+.services-visual-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(76vh, 860px);
+  object-fit: contain;
+  border-radius: calc(var(--r-lg) - 6px);
+  box-shadow: 0 18px 54px rgba(0,0,0,0.58);
+}
+
+.services-visual-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.services-visual-actions .btn {
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .services-visual-section .container {
+    width: min(100%, 390px);
+    padding-inline: 14px;
+    max-width: 100vw;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .services-visual-section .section-title,
+  .services-visual-section .section-sub {
+    overflow-wrap: anywhere;
+    max-width: 100%;
+  }
+
+  .services-visual-frame {
+    padding: 6px;
+    border-radius: var(--r-md);
+  }
+
+  .services-visual-img {
+    border-radius: calc(var(--r-md) - 4px);
+  }
+
+  .services-visual-actions {
+    align-items: stretch;
+  }
+
+  .services-visual-actions .btn {
+    width: 100%;
+    max-width: 360px;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* ── Roofing Services We Help Grow ──────────────────────────────────── */
+.rsw-section { background: var(--black-2); }
+
+/* 6-card grid */
+.rsw-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.rsw-card {
+  background: var(--black-3);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-lg);
+  padding: 24px 20px;
+  transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+.rsw-card:hover {
+  border-color: var(--orange-border);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(255,107,0,0.07);
+}
+
+.rsw-card-featured {
+  border-top: 3px solid var(--orange);
+  background: var(--black-4);
+  position: relative;
+  overflow: hidden;
+}
+.rsw-card-featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 100px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,107,0,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.rsw-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.rsw-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.rsw-service-name {
+  font-family: var(--font-h);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.rsw-desc {
+  font-size: 13px;
+  color: var(--w70);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.rsw-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rsw-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--w70);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  display: block;
+}
+
+.rsw-tag-orange {
+  color: var(--orange-lt);
+  background: var(--orange-glow);
+  border-color: var(--orange-border);
+}
+
+/* Dashboard strip */
+.rsw-dashboard {
+  background: var(--black-4);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.rsw-dash-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.rsw-dash-dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse-live 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+
+.rsw-dash-title {
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--w70);
+  letter-spacing: 0.04em;
+}
+
+.rsw-dash-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.rsw-dash-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--black-3);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.rsw-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.rsw-status-dot.green  { background: var(--green); box-shadow: 0 0 5px var(--green); }
+.rsw-status-dot.orange { background: var(--orange); box-shadow: 0 0 5px rgba(255,107,0,0.6); }
+
+.rsw-dash-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.rsw-dash-sub {
+  font-size: 11px;
+  color: var(--w40);
+  margin-top: 2px;
+}
+
+/* Activity feed */
+.rsw-activity {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+}
+
+.rsw-act-title {
+  font-family: var(--font-h);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--w40);
+  margin-bottom: 12px;
+}
+
+.rsw-act-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--w70);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.rsw-act-item:last-child { border-bottom: none; }
+
+.rsw-act-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rsw-act-dot.green  { background: var(--green); }
+.rsw-act-dot.orange { background: var(--orange); }
+
+/* CTA row */
+.rsw-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (min-width: 480px) {
+  .rsw-grid { grid-template-columns: repeat(2, 1fr); }
+  .rsw-dash-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .rsw-grid { grid-template-columns: repeat(3, 1fr); }
+  .rsw-dash-grid { grid-template-columns: repeat(4, 1fr); }
+  .rsw-cta { flex-direction: row; justify-content: center; }
+  .rsw-tags { flex-direction: row; flex-wrap: wrap; }
+}
